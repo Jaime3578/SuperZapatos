@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        $(document).ready(function () {
+            $("form").validate();
+        });
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrapcss")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="jumbotron">
+      <h1>Super Zapatos</h1>
+      <p>los mejores pasos de su vida!</p> 
+    </div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">SUPER ZAPATOS</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="@Url.Action("Index","Home")">Inicio</a></li>
+          <li><a href="@Url.Action("Index","Store")">Tiendas</a></li>
+          <li><a href="@Url.Action("Index","Article")">Tiendas</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div class="jumbotron text-center">
+      <p>2017 - Jaime Eduardo Echeverry</p> 
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

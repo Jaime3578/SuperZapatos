@@ -1,0 +1,33 @@
+﻿@model SuperZapatosWeb.Models.StoreModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Está seguro de borrar este registro?</h3>
+<fieldset>
+    <legend>Tienda</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.address)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Borrar"  class="btn btn-primary"/> |
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+}

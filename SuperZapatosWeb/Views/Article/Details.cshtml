@@ -1,0 +1,58 @@
+﻿@model SuperZapatosWeb.Models.ArticleModel
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<fieldset>
+    <legend>Articulos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.total_in_shelf)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.total_in_shelf)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.total_in_vault)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.total_in_vault)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.storeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.storeName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

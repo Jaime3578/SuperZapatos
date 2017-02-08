@@ -1,0 +1,139 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.jumbotron
+{
+    margin-bottom: 0px;
+}
+
+.navbar-nav li a
+{
+  font-size:23px;
+}
+
+.container table td
+{
+    font-size:20px;
+}
+
+.container table th
+{
+    font-size:20px;
+}
+
+.container table
+{
+    margin-bottom:30px;
+}
+
+.container .row p
+{
+    font-size:25px;
+}
+
+label
+{
+     font-size:25px;
+}
+
+input
+{
+    width: 100%;
+    font-size:18px;
+}
+
+legend
+{
+    font-size: 25px;
+    color: #008dea;
+}
+
+a
+{
+    font-size:23px;
+}
+
+.display-label
+{
+    font-size: 25px;
+    font-weight:bold;
+}
+
+.display-field
+{
+    font-size: 23px;
+}
+fieldset
+{
+    margin: 0 auto;
+    width:60% /* value of your choice which suits your alignment */
+}
+
+select
+{
+    width: 100%;
+    font-size:18px;
+}

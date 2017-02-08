@@ -1,0 +1,30 @@
+﻿@model SuperZapatosWeb.Models.StoreModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<fieldset>
+    <legend>Tiendas</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.address)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new {  id=Model.id }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
