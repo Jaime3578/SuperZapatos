@@ -145,15 +145,24 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BasicHttpAuthorizeAttribute.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\articlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\storesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BasicOperationsHelper.cs" />
     <Compile Include="Mappings\ArticleMappings.cs" />
+    <Compile Include="Mappings\ArticleServiceMappings.cs" />
     <Compile Include="Mappings\StoreMappings.cs" />
     <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\ArticleServiceModel.cs" />
+    <Compile Include="Models\BadResponse.cs" />
+    <Compile Include="Models\ServiceResponseArticle.cs" />
+    <Compile Include="Models\ServiceResponseStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\StoreModel.cs" />
   </ItemGroup>

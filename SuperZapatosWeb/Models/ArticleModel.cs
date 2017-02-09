@@ -29,7 +29,6 @@ namespace SuperZapatosWeb.Models
         public int total_in_vault { get; set; }
         [Display(Name = "Tienda")]
         public string storeName { get; set; }
-        public IEnumerable<Store> storeList { get; set; }
         public int storeId { get; set; }
     }
 }
