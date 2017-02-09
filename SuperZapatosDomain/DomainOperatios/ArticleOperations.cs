@@ -33,6 +33,11 @@ namespace SuperZapatosDomain.BussinessLogic
 
         }
 
+        public IEnumerable<Article> GetArticlesByStore(int id)
+        {
+            return GetAll().Where(x => x.store_id == id);
+        }
+
         public Article FindById(int id)
         {
             Article article = new Article();

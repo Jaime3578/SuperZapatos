@@ -11,6 +11,8 @@ namespace SuperZapatosDomain.DomainOperatios
     {
         IEnumerable<Article> GetAll();
 
+        IEnumerable<Article> GetArticlesByStore(int id);
+
         Article FindById(int id);
 
         int Insert(Article article);
@@ -18,5 +20,7 @@ namespace SuperZapatosDomain.DomainOperatios
         int Delete(int id);
 
         int Update(Article article);
+
+
     }
 }

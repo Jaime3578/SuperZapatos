@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace SuperZapatosWeb
 {
@@ -11,8 +12,14 @@ namespace SuperZapatosWeb
         {
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "services/{controller}/{id}",
+                routeTemplate: "services/{controller}/",
                 defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "articles",
+                routeTemplate: "services/articles/stores/{id}",
+                defaults: new { controller = "stores", action = "GetArticlesByStore", id = RouteParameter.Optional }
             );
         }
     }

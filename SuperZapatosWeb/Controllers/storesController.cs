@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using SuperZapatosDomain.BussinessLogic;
+using SuperZapatosDomain.DomainOperatios;
 using SuperZapatosModel;
 using SuperZapatosModel.UnitOfWork;
 using SuperZapatosWeb.Helpers;
@@ -17,11 +18,13 @@ namespace SuperZapatosWeb.Controllers
     public class storesController : ApiController
     {
         private readonly IStoreOperations _storeOperations;
+        private readonly IArticleOperations _articleOperations;
         private readonly IUnitOfWork _unitOfWork;
 
-        public storesController(IStoreOperations storeOperations)
+        public storesController(IStoreOperations storeOperations, IArticleOperations articleOperations)
         {
             _storeOperations = storeOperations;
+            _articleOperations = articleOperations;
         }
 
         [BasicHttpAuthorize]
@@ -47,11 +50,36 @@ namespace SuperZapatosWeb.Controllers
         }
 
         [BasicHttpAuthorize]
-        [Route("services/articles/stores/{id}")]
         [HttpGet]
         public Object GetArticlesByStore(string id)
         {
-            return "perro hdp";
+            int n;
+            bool isNumeric = int.TryParse(id, out n);
+            List<ArticleServiceModel> artList = new List<ArticleServiceModel>();
+            ServiceResponseArticle sra = new ServiceResponseArticle();
+
+            try{
+                 if (!isNumeric)
+                {
+                    return Json(new BadResponse { error_code = 400, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(400) });
+                }
+
+                artList = ArticleServiceMappings.ToViewEntityList(_articleOperations.GetArticlesByStore(n).ToList());
+                n = artList.Count();
+           
+                if (n <= 0)
+                {
+                    return Json(new BadResponse { error_code = 404, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(404) });
+                }
+
+
+
+            }catch (Exception e)
+            {
+                return Json(new BadResponse { error_code = 200, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(200) });
+            }
+
+            return
         }
     }
 }
