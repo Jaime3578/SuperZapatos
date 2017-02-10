@@ -12,7 +12,7 @@ namespace SuperZapatosModel.Migrations
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        name = c.String(),
+                        name = c.String(nullable: false, maxLength: 250, unicode: false),
                         description = c.String(),
                         price = c.Single(nullable: false),
                         total_in_shelf = c.Int(nullable: false),
@@ -20,7 +20,7 @@ namespace SuperZapatosModel.Migrations
                         store_id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.Stores", t => t.store_id)
+                .ForeignKey("dbo.Stores", t => t.store_id, cascadeDelete: true)
                 .Index(t => t.store_id);
             
             CreateTable(
@@ -28,7 +28,7 @@ namespace SuperZapatosModel.Migrations
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        name = c.String(),
+                        name = c.String(nullable: false, maxLength: 250, unicode: false),
                         address = c.String(),
                     })
                 .PrimaryKey(t => t.id);

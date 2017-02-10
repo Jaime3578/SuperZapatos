@@ -11,15 +11,21 @@ namespace SuperZapatosWeb
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "services/{controller}/",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
                 name: "articles",
                 routeTemplate: "services/articles/stores/{id}",
                 defaults: new { controller = "stores", action = "GetArticlesByStore", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "stores",
+                routeTemplate: "services/stores/",
+                defaults: new { controller = "Stores", action = "Get" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "articls",
+                routeTemplate: "services/articles/",
+                defaults: new { controller = "Articles", action = "Get" }
             );
         }
     }

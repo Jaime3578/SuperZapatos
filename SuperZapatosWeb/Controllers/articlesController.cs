@@ -12,35 +12,43 @@ using SuperZapatosWeb.Models;
 
 namespace SuperZapatosWeb.Controllers
 {
-    public class articlesController : ApiController
+    public class ArticlesController : ApiController
     {
         private readonly IArticleOperations _articleOperations;
 
-        public articlesController(IArticleOperations articleOperations)
+        public ArticlesController(IArticleOperations articleOperations)
         {
             _articleOperations = articleOperations;
         }
 
+        /// <summary>
+        /// Return all articles stored in db
+        /// </summary>
+        /// <returns>articles jsonList</returns>
         [BasicHttpAuthorize]
         [HttpGet]
-        public Object Get()
+        public IHttpActionResult Get()
         {
-            ServiceResponseArticle sra = new ServiceResponseArticle();
             List<ArticleServiceModel> articleList = new List<ArticleServiceModel>();
 
             try
             {
                 articleList = ArticleServiceMappings.ToViewEntityList(_articleOperations.GetAll().ToList());
-                sra.articles = articleList;
-                sra.success = "true";
-                sra.total_elements = articleList.Count();
+
+                BadResponse br = BasicOperationsHelper.ValidateRequest("0", articleList.Count());
+
+                if (br != null)
+                {
+                    return Json(br);
+                }
+
             }
             catch (Exception e)
             {
-                return Json(new BadResponse { error_code = 200, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(200) });
+                return Json(new { error_code = 200, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(200) });
             }
 
-            return Json(sra);
+            return Json(new{articles=articleList, succes = true, total_elements = articleList.Count()});
         }
     }
 }

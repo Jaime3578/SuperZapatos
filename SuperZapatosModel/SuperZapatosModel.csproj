@@ -46,41 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201702071322398_Initial.cs" />
-    <Compile Include="Migrations\201702071322398_Initial.Designer.cs">
-      <DependentUpon>201702071322398_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702071327146_Initial1.cs" />
-    <Compile Include="Migrations\201702071327146_Initial1.Designer.cs">
-      <DependentUpon>201702071327146_Initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702071633054_Initial2.cs" />
-    <Compile Include="Migrations\201702071633054_Initial2.Designer.cs">
-      <DependentUpon>201702071633054_Initial2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702071700560_Initial3.cs" />
-    <Compile Include="Migrations\201702071700560_Initial3.Designer.cs">
-      <DependentUpon>201702071700560_Initial3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702071711548_Initial4.cs" />
-    <Compile Include="Migrations\201702071711548_Initial4.Designer.cs">
-      <DependentUpon>201702071711548_Initial4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702071829141_Initial5.cs" />
-    <Compile Include="Migrations\201702071829141_Initial5.Designer.cs">
-      <DependentUpon>201702071829141_Initial5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702071831314_Initial6.cs" />
-    <Compile Include="Migrations\201702071831314_Initial6.Designer.cs">
-      <DependentUpon>201702071831314_Initial6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702072013464_Initial7.cs" />
-    <Compile Include="Migrations\201702072013464_Initial7.Designer.cs">
-      <DependentUpon>201702072013464_Initial7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702080000199_Initial8.cs" />
-    <Compile Include="Migrations\201702080000199_Initial8.Designer.cs">
-      <DependentUpon>201702080000199_Initial8.cs</DependentUpon>
+    <Compile Include="Migrations\201702100125536_Initial.cs" />
+    <Compile Include="Migrations\201702100125536_Initial.Designer.cs">
+      <DependentUpon>201702100125536_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Article.cs" />
@@ -101,32 +69,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702071322398_Initial.resx">
-      <DependentUpon>201702071322398_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702071327146_Initial1.resx">
-      <DependentUpon>201702071327146_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702071633054_Initial2.resx">
-      <DependentUpon>201702071633054_Initial2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702071700560_Initial3.resx">
-      <DependentUpon>201702071700560_Initial3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702071711548_Initial4.resx">
-      <DependentUpon>201702071711548_Initial4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702071829141_Initial5.resx">
-      <DependentUpon>201702071829141_Initial5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702071831314_Initial6.resx">
-      <DependentUpon>201702071831314_Initial6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702072013464_Initial7.resx">
-      <DependentUpon>201702072013464_Initial7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702080000199_Initial8.resx">
-      <DependentUpon>201702080000199_Initial8.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702100125536_Initial.resx">
+      <DependentUpon>201702100125536_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,71 +16,78 @@ using SuperZapatosWeb.Models;
 
 namespace SuperZapatosWeb.Controllers
 {
-    public class storesController : ApiController
+    public class StoresController : ApiController
     {
         private readonly IStoreOperations _storeOperations;
         private readonly IArticleOperations _articleOperations;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public storesController(IStoreOperations storeOperations, IArticleOperations articleOperations)
+        public StoresController(IStoreOperations storeOperations, IArticleOperations articleOperations)
         {
             _storeOperations = storeOperations;
             _articleOperations = articleOperations;
         }
 
+        /// <summary>
+        /// Return all stores in json format
+        /// </summary>
+        /// <returns>stores in json format</returns>
         [BasicHttpAuthorize]
         [HttpGet]
-        public Object Get()
+        public IHttpActionResult Get()
         {
-            ServiceResponseStore srs = new ServiceResponseStore();
-            List<StoreModel> storeList = new List<StoreModel>();
+            List<StoreServiceModel> storeList = new List<StoreServiceModel>();
 
             try
             {
-                storeList = StoreMappings.ToViewEntityList(_storeOperations.GetAll().ToList());
-                srs.stores = storeList;
-                srs.success = "true";
-                srs.total_elements = storeList.Count();
+                storeList = StoreServiceMappings.ToViewEntityList(_storeOperations.GetAll().ToList());
+
+                BadResponse br = BasicOperationsHelper.ValidateRequest("0", storeList.Count());
+
+                if (br != null)
+                {
+                    return Json(br);
+                }
             }
             catch (Exception e)
             {
-                return Json(new BadResponse { error_code = 200, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(200) });
+                Trace.TraceError(e.StackTrace);
+                return Json(new { stores = storeList, succes = true, total_elements = storeList.Count() });
             }
 
-            return Json(srs);
+            return Json(new { stores = storeList, succes = true, total_elements = storeList.Count() });
         }
 
+        /// <summary>
+        /// Return all articles from a store
+        /// </summary>
+        /// <param name="id">id of store</param>
+        /// <returns>list of articles</returns>
         [BasicHttpAuthorize]
         [HttpGet]
-        public Object GetArticlesByStore(string id)
+        public IHttpActionResult GetArticlesByStore(string id)
         {
             int n;
             bool isNumeric = int.TryParse(id, out n);
+
             List<ArticleServiceModel> artList = new List<ArticleServiceModel>();
-            ServiceResponseArticle sra = new ServiceResponseArticle();
 
             try{
-                 if (!isNumeric)
-                {
-                    return Json(new BadResponse { error_code = 400, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(400) });
-                }
 
                 artList = ArticleServiceMappings.ToViewEntityList(_articleOperations.GetArticlesByStore(n).ToList());
-                n = artList.Count();
-           
-                if (n <= 0)
+                BadResponse br = BasicOperationsHelper.ValidateRequest(id, artList.Count());
+
+                if (br != null)
                 {
-                    return Json(new BadResponse { error_code = 404, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(404) });
+                    return Json(br);
                 }
-
-
 
             }catch (Exception e)
             {
-                return Json(new BadResponse { error_code = 200, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(200) });
+                Trace.TraceError(e.StackTrace);
+                return Json(new { error_code = 200, success = "false", error_msg = BasicOperationsHelper.GetErrorCodes(200) });
             }
 
-            return
+            return Json(new { articles = artList, succes = true, total_elements = artList.Count() });
         }
     }
 }
